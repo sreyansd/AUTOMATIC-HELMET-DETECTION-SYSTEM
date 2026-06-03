@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#ffb56a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="HelmetSafe">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='helmet-icon-192.png') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='helmet-icon-192.png') }}">
+    <style>
+        :root {
+            --bg: #fff5eb;
+            --card: rgba(255, 255, 255, 0.93);
+            --border: rgba(220, 93, 24, 0.14);
+            --accent: #d95d18;
+            --accent-dark: #992f08;
+            --text: #3d2414;
+            --muted: #7c5339;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background: radial-gradient(circle at top left, rgba(255, 218, 163, 0.32), transparent 30%),
+                        linear-gradient(140deg, #fff5eb 0%, #ffdab2 32%, #ffffff 100%);
+            padding: 32px 24px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(circle at bottom right, rgba(255, 149, 74, 0.14), transparent 20%),
+                              linear-gradient(120deg, rgba(255, 255, 255, 0.95), transparent 38%);
+            pointer-events: none;
+        }
+
+        .wrapper {
+            max-width: 980px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header {
+            margin-bottom: 32px;
+            position: relative;
+            padding: 28px 28px 18px;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(220, 93, 24, 0.14);
+            border-radius: 32px;
+            box-shadow: 0 22px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .header::after {
+            content: '🏍️';
+            position: absolute;
+            top: 18px;
+            right: 24px;
+            font-size: 4rem;
+            opacity: 0.14;
+        }
+
+        h1 {
+            margin: 0 0 8px;
+            font-size: clamp(2.8rem, 4vw, 4.4rem);
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            color: var(--accent);
+            text-shadow: 0 3px 18px rgba(217, 93, 24, 0.12);
+        }
+
+        .subheading {
+            margin: 0;
+            font-size: 1.05rem;
+            color: var(--muted);
+            max-width: 760px;
+            line-height: 1.7;
+        }
+
+        .info {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(240px, 1fr));
+            gap: 24px;
+            margin-top: 28px;
+        }
+
+        .card {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 30px;
+            box-shadow: 0 20px 42px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+            margin: 0 0 12px;
+            font-size: 2.25rem;
+            color: var(--accent-dark);
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .link-button {
+            display: inline-block;
+            margin-top: 32px;
+            padding: 16px 26px;
+            border-radius: 999px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #e86f24, #ffaf52);
+            font-weight: 700;
+            box-shadow: 0 18px 40px rgba(232, 111, 36, 0.18);
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .link-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 22px 45px rgba(232, 111, 36, 0.22);
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="header">
+            <h1>Admin Dashboard</h1>
+            <p class="subheading">A helmet is only as good as its lock; always fasten your chin strap securely to prevent the helmet from flying off during a sudden impact or skid.. Keep an eye on helmet compliance and challan status at a glance.</p>
+        </div>
+
+        <div class="info">
+            <div class="card">
+                <h2>{{ total.total }}</h2>
+                <p>Total violations recorded in the system.</p>
+            </div>
+            <div class="card">
+                <h2>{{ unpaid.unpaid }}</h2>
+                <p>Number of unpaid challans pending action.</p>
+            </div>
+        </div>
+
+        <a class="link-button" href="/violations">View All Violations</a>
+    </div>
+</body>
+</html>

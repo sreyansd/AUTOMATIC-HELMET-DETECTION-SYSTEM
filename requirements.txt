@@ -1,0 +1,9 @@
+opencv-python
+numpy
+ultralytics
+pytesseract
+flask
+mysql-connector-python
+reportlab
+requests
+gunicorn

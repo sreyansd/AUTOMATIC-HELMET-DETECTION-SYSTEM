@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Violations</title>
+    <link rel="manifest" href="{{ url_for('static', filename='manifest.json') }}">
+    <meta name="theme-color" content="#ffb56a">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="HelmetSafe">
+    <link rel="apple-touch-icon" href="{{ url_for('static', filename='helmet-icon-192.png') }}">
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='helmet-icon-192.png') }}">
+    <style>
+        :root {
+            --bg: #fff7ef;
+            --surface: rgba(255, 255, 255, 0.94);
+            --border: rgba(220, 93, 24, 0.16);
+            --text: #3c2612;
+            --muted: #7a5234;
+            --accent: #d95d18;
+            --accent-dark: #a23c0c;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--text);
+            background: radial-gradient(circle at top right, rgba(255, 204, 153, 0.22), transparent 28%),
+                        linear-gradient(180deg, #fff7ef 0%, #ffe5c5 32%, #ffffff 100%);
+            padding: 28px;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: radial-gradient(circle at bottom left, rgba(255, 140, 64, 0.12), transparent 18%),
+                              linear-gradient(90deg, rgba(255, 255, 255, 0.92), transparent 56%);
+            pointer-events: none;
+        }
+
+        .container {
+            max-width: 1140px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 16px;
+            margin-bottom: 26px;
+            padding: 24px 26px;
+            background: rgba(255, 255, 255, 0.94);
+            border: 1px solid rgba(220, 93, 24, 0.12);
+            border-radius: 28px;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        .hero-bar h1 {
+            margin: 0;
+            font-size: clamp(2.2rem, 3vw, 3.4rem);
+            letter-spacing: -0.04em;
+            text-transform: uppercase;
+            color: var(--accent);
+            text-shadow: 0 2px 8px rgba(217, 93, 24, 0.12);
+        }
+
+        .hero-bar p {
+            margin: 0;
+            color: var(--muted);
+            max-width: 720px;
+            line-height: 1.75;
+            font-size: 1rem;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 22px;
+            padding: 12px 18px;
+            border-radius: 999px;
+            text-decoration: none;
+            color: white;
+            background: linear-gradient(135deg, #e86f24, #ffac56);
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 18px 40px rgba(0, 0, 0, 0.08);
+        }
+
+        th, td {
+            padding: 18px 16px;
+            text-align: left;
+            border-bottom: 1px solid rgba(211, 91, 21, 0.12);
+        }
+
+        th {
+            background: linear-gradient(90deg, rgba(255,173,91,0.95), rgba(217,93,24,0.95));
+            color: white;
+            font-size: 0.95rem;
+            letter-spacing: 0.03em;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        td img {
+            max-width: 180px;
+            border-radius: 14px;
+            border: 1px solid rgba(211, 91, 21, 0.12);
+        }
+
+        .download-link {
+            color: var(--accent-dark);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .download-link:hover {
+            color: #7f2d06;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="hero-bar">
+        <div>
+            <h1>Violation Records</h1>
+            <p>SAFE DRIVE SAVE LIFE</p>
+        </div>
+        <a class="back-link" href="/">← Home</a>
+    </div>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Vehicle Number</th>
+            <th>Violation</th>
+            <th>Fine</th>
+            <th>Status</th>
+            <th>Image</th>
+            <th>Challan</th>
+        </tr>
+
+    {% for v in violations %}
+    <tr>
+        <td>{{ v.id }}</td>
+        <td>{{ v.vehicle_number or 'UNKNOWN' }}</td>
+        <td>{{ v.violation_type }}</td>
+        <td>{{ v.fine_amount }}</td>
+        <td>{{ v.status }}</td>
+        <td>
+            <img src="{{ url_for('static', filename=v.image_path) }}" width="200" alt="Violation image">
+        </td>
+        <td>
+            {% if v.challan_pdf %}
+                <a class="download-link" href="{{ url_for('static', filename=v.challan_pdf) }}" target="_blank">Download PDF</a>
+            {% else %}
+                N/A
+            {% endif %}
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+<svg width="1200" height="800" viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff7f0"/>
+      <stop offset="70%" stop-color="#ffd8a6"/>
+      <stop offset="100%" stop-color="#ffb56a"/>
+    </linearGradient>
+    <linearGradient id="helmetGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fff"/>
+      <stop offset="100%" stop-color="#fff8f0"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bgGrad)"/>
+  <circle cx="280" cy="220" r="120" fill="#fff" opacity="0.6"/>
+  <circle cx="340" cy="180" r="96" fill="#fff" opacity="0.5"/>
+  <g transform="translate(120 220)">
+    <path d="M420 110 C430 40 520 20 590 80 C620 110 620 180 580 230 C540 280 440 300 380 260 C320 220 250 170 280 110 C300 70 360 60 420 110 Z" fill="#fff" opacity="0.95"/>
+    <path d="M410 130 C430 110 500 100 540 130 C560 150 560 190 530 220 C500 250 450 250 420 220 C390 190 390 150 410 130 Z" fill="#e86f24" opacity="0.9"/>
+    <path d="M440 150 C465 130 520 135 540 160 L535 190 C520 210 480 215 455 190 C440 175 435 160 440 150 Z" fill="#fff" opacity="0.95"/>
+  </g>
+  <g transform="translate(520 400) scale(1.3)">
+    <path d="M-40 10 C-80 10 -110 -20 -110 -60 C-110 -100 -80 -130 -40 -130 C0 -130 30 -100 30 -60 C30 -20 0 10 -40 10 Z" fill="#3d2414" opacity="0.95"/>
+    <path d="M-130 10 L-130 40 L-90 40 L-90 80 L-50 80 L-50 40 L110 40 L110 80 L150 80 L150 40 L190 40 L190 10 Z" fill="#3d2414"/>
+    <path d="M-100 45 L-110 90 C-110 120 -90 140 -60 140 L70 140 C100 140 120 120 120 90 L110 45 Z" fill="#fff" opacity="0.95"/>
+    <circle cx="-85" cy="160" r="55" fill="#3d2414"/>
+    <circle cx="-85" cy="160" r="42" fill="#fff8f0"/>
+    <circle cx="135" cy="160" r="55" fill="#3d2414"/>
+    <circle cx="135" cy="160" r="42" fill="#fff8f0"/>
+    <path d="M-40 5 C-30 -25 20 -55 100 -55" stroke="#3d2414" stroke-width="28" fill="none" stroke-linecap="round"/>
+    <path d="M80 -50 C90 -15 110 30 130 60" stroke="#3d2414" stroke-width="24" fill="none" stroke-linecap="round"/>
+  </g>
+  <path d="M120 640 C240 540 360 520 480 560 C620 610 740 610 860 560" stroke="#d95d18" stroke-width="22" stroke-linecap="round" fill="none" opacity="0.6"/>
+</svg>

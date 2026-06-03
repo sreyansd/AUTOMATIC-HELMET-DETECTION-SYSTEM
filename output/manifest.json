@@ -1,0 +1,20 @@
+{
+  "name": "Helmet Detection System",
+  "short_name": "HelmetSafe",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#fff7f0",
+  "theme_color": "#ffb56a",
+  "icons": [
+    {
+      "src": "/static/helmet-icon-192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/static/helmet-icon-512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Environment
+.env
+venv/
+.env.*
+
+# Jupyter
+.ipynb_checkpoints/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# SQLite files (optional)
+*.sqlite3
+*.db
+
+# Virtual environment directories
+env/
+venv/
+
+# IDE
+.vscode/
